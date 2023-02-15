@@ -4,35 +4,40 @@ import java.util.*;
 
 public class FloydAlg {
 
-  private static final int MAXN = 100;
-
   private final int X;
+  private double[][] distance;
+  private double[][] next;
+  private double[][] graph;
 
-  private final int[][] distance = new int[MAXN][MAXN];
-  private final int[][] next = new int[MAXN][MAXN];
-  private int[][] graph;
-
-  public FloydAlg(int[][] graph, int inf) {
+  public FloydAlg(double[][] graph, int inf) {
     this.X = inf;
     this.graph = graph;
     compute();
   }
 
+  public FloydAlg() {
+    this.graph = null;
+    this.X = Integer.MAX_VALUE;
+  }
+
   private void compute() {
-    init(graph.length, graph);
+    this.distance = new double[graph.length][graph.length];
+    this.next = new double[graph.length][graph.length];
+    init(graph);
     floyd(graph.length);
   }
 
-  public int[][] getGraph() {
+  public double[][] getGraph() {
     return graph;
   }
 
-  public void setGraph(int[][] graph) {
+  public void setGraph(double[][] graph) {
     this.graph = graph;
+    compute();
   }
 
-  private void init(int V,
-      int[][] graph) {
+  private void init(double[][] graph) {
+    int V = graph.length;
     for (int i = 0; i < V; i++) {
       for (int j = 0; j < V; j++) {
         distance[i][j] = graph[i][j];
@@ -45,25 +50,27 @@ public class FloydAlg {
     }
   }
 
-  private Vector<Integer> constructPath(int from, int to) {
+  private ArrayList<Integer> constructPath(int from, int to) {
+    if (this.graph == null){
+      throw new NullPointerException("Variable \"graph\" wasn't set");
+    }
     if (next[from][to] == -1) {
       return null;
     }
-    Vector<Integer> path = new Vector<>();
+    ArrayList<Integer> path = new ArrayList<>();
     path.add(from);
     while (from != to) {
-      from = next[from][to];
+      from = (int) next[from][to];
       path.add(from);
     }
-  return path;
+    return path;
   }
 
   private void floyd(int V) {
     for (int k = 0; k < V; k++) {
       for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
-          if (distance[i][k] == X ||
-              distance[k][j] == X) {
+          if (distance[i][k] == X || distance[k][j] == X) {
             continue;
           }
           if (distance[i][j] > distance[i][k] + distance[k][j]) {
@@ -75,17 +82,7 @@ public class FloydAlg {
     }
   }
 
-  private String buildPath(Vector<Integer> path) {
-    int n = path.size();
-    StringBuilder s = new StringBuilder();
-    for (int i = 0; i < n - 1; i++) {
-      s.append(path.get(i)).append(" -> ");
-    }
-    s.append(path.get(n - 1));
-    return s.toString();
-  }
-
-  public String getPath(int fromLoc, int toLoc) {
-    return buildPath(constructPath(fromLoc, toLoc));
+  public ArrayList<Integer> getPath(int fromLoc, int toLoc) {
+    return constructPath(fromLoc, toLoc);
   }
 }
