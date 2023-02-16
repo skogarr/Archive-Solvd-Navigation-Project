@@ -18,5 +18,6 @@
         </environment>
     </environments>
     <mappers>
+        <mapper resource="mapper/transit_point-mapper.xml" />
     </mappers>
 </configuration>
