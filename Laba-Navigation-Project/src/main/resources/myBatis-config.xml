@@ -21,5 +21,6 @@
         <mapper resource="mapper/transit_point-mapper.xml" />
         <mapper resource="mapper/bus_route-mapper.xml" />
         <mapper resource="mapper/bus_stop-mapper.xml" />
+        <mapper resource="mapper/distance_between-mapper.xml" />
     </mappers>
 </configuration>
