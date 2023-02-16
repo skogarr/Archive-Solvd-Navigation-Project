@@ -19,5 +19,6 @@
     </environments>
     <mappers>
         <mapper resource="mapper/transit_point-mapper.xml" />
+        <mapper resource="mapper/bus_route-mapper.xml" />
     </mappers>
 </configuration>
