@@ -19,60 +19,60 @@ import java.util.Optional;
 @Service
 public class TramStopService {
 
-    private final TramStopMapper tramStopMapper;
-    private final TramRouteMapper tramRouteMapper;
-    private final TransitPointMapper transitPointMapper;
+    private final ITramStopDAO tramStopDAO;
+    private final ITramRouteDAO tramRouteDAO;
+    private final ITransitPointDAO transitPointDAO;
 
     @GetMapping("/{id}")
     public Optional<TramStop> find(@PathVariable long id) {
-        return Optional.ofNullable(tramStopMapper.getEntityById(id));
+        return Optional.ofNullable(tramStopDAO.getEntityById(id));
     }
 
     @PostMapping("/")
     public ResponseEntity create(@Valid @RequestBody TramStopRequest request) {
-        tramStopMapper.createEntity(new TramStop(request.getId(), request.getTramRouteId(), request.getTransitPointId(), request.getStopNo()));
+        tramStopDAO.createEntity(new TramStop(request.getId(), request.getTramRouteId(), request.getTransitPointId(), request.getStopNo()));
         TramRoute tramRoute = new TramRoute();
         TransitPoint transitPoint = new TransitPoint();
         if(request.getTramRouteId() == tramRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         else if(request.getTramRouteId() != tramRoute.getId() && request.getTransitPointId() == transitPoint.getId()){
-            tramRouteMapper.createEntity(new TramRoute(request.getTramRouteId(), null));
+            tramRouteDAO.createEntity(new TramRoute(request.getTramRouteId(), null));
         }
         else if(request.getTramRouteId() == tramRoute.getId() && request.getTransitPointId() != transitPoint.getId()){
-            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+            transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }
         else{
-            tramRouteMapper.createEntity(new TramRoute(request.getTramRouteId(), null));
-            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+            tramRouteDAO.createEntity(new TramRoute(request.getTramRouteId(), null));
+            transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
     public TramStop update(@PathVariable long id, @Valid @RequestBody TramStopRequest request) {
-        tramStopMapper.updateEntity(new TramStop(request.getId(), request.getTramRouteId(), request.getTransitPointId(), request.getStopNo()));
+        tramStopDAO.updateEntity(new TramStop(request.getId(), request.getTramRouteId(), request.getTransitPointId(), request.getStopNo()));
         TramRoute tramRoute = new TramRoute();
         TransitPoint transitPoint = new TransitPoint();
         if(request.getTramRouteId() == tramRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
-            return tramStopMapper.getEntityById(id);
+            return tramStopDAO.getEntityById(id);
         }
         else if(request.getTramRouteId() != tramRoute.getId() && request.getTransitPointId() == transitPoint.getId()){
-            tramRouteMapper.createEntity(new TramRoute(request.getTramRouteId(), null));
+            tramRouteDAO.createEntity(new TramRoute(request.getTramRouteId(), null));
         }
         else if(request.getTramRouteId() == tramRoute.getId() && request.getTransitPointId() != transitPoint.getId()){
-            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+            transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }
         else{
-            tramRouteMapper.createEntity(new TramRoute(request.getTramRouteId(), null));
-            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+            tramRouteDAO.createEntity(new TramRoute(request.getTramRouteId(), null));
+            transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }
-        return tramStopMapper.getEntityById(id);
+        return tramStopDAO.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable long id) {
-        tramStopMapper.removeEntity(id);
+        tramStopDAO.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
 }

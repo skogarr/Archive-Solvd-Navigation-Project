@@ -17,28 +17,28 @@ import java.util.Optional;
 @Service
 public class TramRouteService {
 
-    private final TramRouteMapper tramRouteMapper;
+    private final ITramRouteDAO tramRouteDAO;
 
     @GetMapping("/{id}")
     public Optional<TramRoute> find(@PathVariable long id) {
-        return Optional.ofNullable(tramRouteMapper.getEntityById(id));
+        return Optional.ofNullable(tramRouteDAO.getEntityById(id));
     }
 
     @PostMapping("/")
     public ResponseEntity create(@Valid @RequestBody TramRouteRequest request) {
-        tramRouteMapper.createEntity(new TramRoute(request.getId(), request.getRouteName()));
+        tramRouteDAO.createEntity(new TramRoute(request.getId(), request.getRouteName()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
     public TramRoute update(@PathVariable long id, @Valid @RequestBody TramRouteRequest request) {
-        tramRouteMapper.updateEntity(new TramRoute(id, request.getRouteName()));
-        return tramRouteMapper.getEntityById(id);
+        tramRouteDAO.updateEntity(new TramRoute(id, request.getRouteName()));
+        return tramRouteDAO.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable long id) {
-        tramRouteMapper.removeEntity(id);
+        tramRouteDAO.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
 }

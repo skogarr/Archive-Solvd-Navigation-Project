@@ -18,28 +18,28 @@ import java.util.Optional;
 @Service
 public class MetroRouteService {
 
-    private final MetroRouteMapper metroRouteMapper;
+    private final IMetroRouteDAO metroRouteDAO;
 
     @GetMapping("/{id}")
     public Optional<MetroRoute> find(@PathVariable long id) {
-        return Optional.ofNullable(metroRouteMapper.getEntityById(id));
+        return Optional.ofNullable(metroRouteDAO.getEntityById(id));
     }
 
     @PostMapping("/")
     public ResponseEntity create(@Valid @RequestBody MetroRouteRequest request) {
-        metroRouteMapper.createEntity(new MetroRoute(request.getId(), request.getRouteName()));
+        metroRouteDAO.createEntity(new MetroRoute(request.getId(), request.getRouteName()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
     public MetroRoute update(@PathVariable long id, @Valid @RequestBody MetroRouteRequest request) {
-        metroRouteMapper.updateEntity(new MetroRoute(id, request.getRouteName()));
-        return metroRouteMapper.getEntityById(id);
+        metroRouteDAO.updateEntity(new MetroRoute(id, request.getRouteName()));
+        return metroRouteDAO.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable long id) {
-        metroRouteMapper.removeEntity(id);
+        metroRouteDAO.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
 }

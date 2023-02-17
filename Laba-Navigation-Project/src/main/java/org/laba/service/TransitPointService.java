@@ -17,28 +17,28 @@ import java.util.Optional;
 @Service
 public class TransitPointService {
 
-    private final TransitPointMapper transitPointMapper;
+    private final ITransitPointDAO transitPointDAO;
 
     @GetMapping("/{id}")
     public Optional<TransitPoint> find(@PathVariable long id) {
-        return Optional.ofNullable(transitPointMapper.getEntityById(id));
+        return Optional.ofNullable(transitPointDAO.getEntityById(id));
     }
 
     @PostMapping("/")
     public ResponseEntity create(@Valid @RequestBody TransitPointRequest request) {
-        transitPointMapper.createEntity(new TransitPoint(request.getId()));
+        transitPointDAO.createEntity(new TransitPoint(request.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
     public TransitPoint update(@PathVariable long id, @Valid @RequestBody TransitPointRequest request) {
-        transitPointMapper.updateEntity(new TransitPoint(id));
-        return transitPointMapper.getEntityById(id);
+        transitPointDAO.updateEntity(new TransitPoint(id));
+        return transitPointDAO.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable long id) {
-        transitPointMapper.removeEntity(id);
+        transitPointDAO.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
 }
