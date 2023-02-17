@@ -15,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @ToString
 @Service
-public class BusRouteService {
+public class TransitPointService {
 
     private final TransitPointMapper transitPointMapper;
 
