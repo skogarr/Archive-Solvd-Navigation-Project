@@ -31,7 +31,7 @@
         DELETE FROM bus_routes WHERE id = #{id}
     </delete>
 
-    <resultMap id="busRouteResultMap" type="org.laba.models.BusRoute" autoMapping="false">
+    <resultMap id="busRouteResultMap" type="org.laba.model.BusRoute" autoMapping="false">
         <id column="bus_route_id" property="id"/>
         <result column="route_name" property="routeName"/>
     </resultMap>

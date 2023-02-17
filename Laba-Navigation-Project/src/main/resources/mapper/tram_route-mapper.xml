@@ -31,7 +31,7 @@
         DELETE FROM tram_routes WHERE id = #{id}
     </delete>
 
-    <resultMap id="tramRouteResultMap" type="org.laba.models.TramRoute" autoMapping="false">
+    <resultMap id="tramRouteResultMap" type="org.laba.model.TramRoute" autoMapping="false">
         <id column="tram_route_id" property="id"/>
         <result column="route_name" property="routeName"/>
     </resultMap>

@@ -31,7 +31,7 @@
         DELETE FROM metro_routes WHERE id = #{id}
     </delete>
 
-    <resultMap id="metroRouteResultMap" type="org.laba.models.MetroRoute" autoMapping="false">
+    <resultMap id="metroRouteResultMap" type="org.laba.model.MetroRoute" autoMapping="false">
         <id column="metro_route_id" property="id"/>
         <result column="route_name" property="routeName"/>
     </resultMap>

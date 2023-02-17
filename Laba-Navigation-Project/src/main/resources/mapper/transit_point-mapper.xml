@@ -20,7 +20,7 @@
         DELETE FROM transit_points WHERE id = #{id}
     </delete>
 
-    <resultMap id="transitPointsResultMap" type="org.laba.models.TransitPoint" autoMapping="false">
+    <resultMap id="transitPointsResultMap" type="org.laba.model.TransitPoint" autoMapping="false">
         <id column="transit_point_id" property="id"/>
     </resultMap>
 </mapper>
