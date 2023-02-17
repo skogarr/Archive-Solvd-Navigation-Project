@@ -1,4 +1,4 @@
 package org.laba.dao;
 
-public interface ITravelWeightDAO {
+public interface ITravelWeightDAO extends IBaseDAO<TravelWeight>{
 }

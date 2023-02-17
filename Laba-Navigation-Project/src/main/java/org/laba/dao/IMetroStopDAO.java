@@ -1,4 +1,4 @@
 package org.laba.dao;
 
-public interface IMetroStopDAO {
+public interface IMetroStopDAO extends IBaseDAO<MetroStop>{
 }

@@ -1,4 +1,4 @@
 package org.laba.dao;
 
-public interface IDistanceBetweenDAO {
+public interface IDistanceBetweenDAO extends IBaseDAO<DistanceBetween>{
 }
