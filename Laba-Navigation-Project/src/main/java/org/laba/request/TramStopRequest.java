@@ -1,13 +1,10 @@
-package org.laba.model;
+package org.laba.request;
 
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString
-public class TramStop {
+public class TramStopRequest {
 
     private long id;
 

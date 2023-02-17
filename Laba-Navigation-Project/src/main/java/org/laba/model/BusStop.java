@@ -9,6 +9,8 @@ import lombok.*;
 @ToString
 public class BusStop {
 
+    private long id;
+
     private long busRouteId;
 
     private long transitPointId;

@@ -1,13 +1,10 @@
-package org.laba.model;
+package org.laba.request;
 
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString
-public class MetroStops {
+public class MetroStopsRequest {
     private long id;
 
     private long metroRouteId;

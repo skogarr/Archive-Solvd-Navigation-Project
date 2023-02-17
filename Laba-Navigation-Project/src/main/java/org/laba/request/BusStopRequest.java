@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 public class BusStopRequest {
+    private long id;
 
     @NotEmpty
     private long busRouteId;

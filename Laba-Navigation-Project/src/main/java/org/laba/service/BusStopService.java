@@ -22,49 +22,59 @@ import java.util.Optional;
 public class BusStopService {
 
     private final BusStopMapper busStopMapper;
+    private final BusRouteMapper busRouteMapper;
+    private final TransitPointMapper transitPointMapper;
 
     @GetMapping("/{id}")
-    public Optional<BusStop> findBusStop(@PathVariable long busRouteId) {
-        return Optional.ofNullable(busStopMapper.getEntityById(busRouteId));
+    public Optional<BusStop> findBusStop(@PathVariable long id) {
+        return Optional.ofNullable(busStopMapper.getEntityById(id));
     }
 
     @PostMapping("/")
     public ResponseEntity createBusStop(@Valid @RequestBody BusStopRequest request) {
-        busStopMapper.createEntity(new BusStop(request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
-        BusRoute busRoute = new BusRoute();
-        if(request.getBusRouteId() == busRoute.getId()) {
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        else{
-            busRouteMapper.createEntity(new BusRoute(request.getBusRouteId(), null));
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @PutMapping("/{id}")
-    public BusStop updateBusStop(@PathVariable long busRouteId, @Valid @RequestBody BusStopRequest request) {
-        busStopMapper.updateEntity(new BusStop(request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
+        busStopMapper.createEntity(new BusStop(request.getId(), request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
         BusRoute busRoute = new BusRoute();
         TransitPoint transitPoint = new TransitPoint();
         if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
-            return busStopMapper.getEntityById(busRouteId);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         else if(request.getBusRouteId() != busRoute.getId() && request.getTransitPointId() == transitPoint.getId()){
             busRouteMapper.createEntity(new BusRoute(request.getBusRouteId(), null));
         }
         else if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() != transitPoint.getId()){
-            busTransitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
         }
         else{
             busRouteMapper.createEntity(new BusRoute(request.getBusRouteId(), null));
-            busTransitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
         }
-        return busStopMapper.getEntityById(busRouteId);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping("/{id}")
+    public BusStop updateBusStop(@PathVariable long id, @Valid @RequestBody BusStopRequest request) {
+        busStopMapper.updateEntity(new BusStop(request.getId(), request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
+        BusRoute busRoute = new BusRoute();
+        TransitPoint transitPoint = new TransitPoint();
+        if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
+            return busStopMapper.getEntityById(id);
+        }
+        else if(request.getBusRouteId() != busRoute.getId() && request.getTransitPointId() == transitPoint.getId()){
+            busRouteMapper.createEntity(new BusRoute(request.getBusRouteId(), null));
+        }
+        else if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() != transitPoint.getId()){
+            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+        }
+        else{
+            busRouteMapper.createEntity(new BusRoute(request.getBusRouteId(), null));
+            transitPointMapper.createEntity(new TransitPoint(request.getTransitPointId()));
+        }
+        return busStopMapper.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteBusStop(@PathVariable long busRouteId) {
-        busStopMapper.removeEntity(busRouteId);
+    public ResponseEntity deleteBusStop(@PathVariable long id) {
+        busStopMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
 }
