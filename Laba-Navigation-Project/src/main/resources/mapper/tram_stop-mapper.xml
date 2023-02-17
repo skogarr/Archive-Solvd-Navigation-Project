@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.ITramStopDAO">
+
+    <sql id="body">
+        ts.id as tram_stop_id,
+        ts.tram_route_id as tram_route_id,
+        ts.transit_point_id as transit_point_id,
+        ts.stop_no as stop_no
+    </sql>
+
+    <select id="getEntityById" resultMap="tramStopResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        tram_stops ts
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectTramRoute" resultType="org.laba.model.TramRoute">
+        SELECT * FROM tram_routes WHERE id= #{id}
+    </select>
+
+    <select id="selectTransitPoint" resultType="org.laba.model.TransitPoint">
+        SELECT * FROM transit_points WHERE id= #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tram_stops (tram_route_id, transit_point_id, stop_no)
+        VALUES (#{tramRoute.id}, #{transitPoint.id}, #{stop_no})
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE tram_stops SET
+        tram_route_id = #{tramRoute.id},
+        transit_point_id = #{transitPoint.id},
+        stop_no = #{stop_no}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM tram_stops WHERE id = #{id}
+    </delete>
+
+    <resultMap id="tramStopResultMap" type="org.laba.model.TramStop" autoMapping="false">
+        <id column="tram_stop_id" property="id"/>
+        <result column="stop_no" property="stopNo"/>
+        <association property="tramRoute" column="tram_route_id" javaType="org.laba.model.TramRoute" select="selectTramRoute"/>
+        <association property="transitPoint" column="transit_point_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+    </resultMap>
+</mapper>

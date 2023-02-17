@@ -12,6 +12,15 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <myBatis.version>3.5.11</myBatis.version>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${myBatis.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>
