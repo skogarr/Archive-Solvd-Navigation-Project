@@ -25,5 +25,6 @@
         <mapper resource="mapper/metro_route-mapper.xml" />
         <mapper resource="mapper/metro_stop-mapper.xml" />
         <mapper resource="mapper/tram_route-mapper.xml" />
+        <mapper resource="mapper/tram_stop-mapper.xml" />
     </mappers>
 </configuration>
