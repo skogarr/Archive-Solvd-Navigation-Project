@@ -5,14 +5,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IBusRouteDAO;
+import org.laba.dao.IBusStopDAO;
 
 import java.io.IOException;
 import java.io.Reader;
 
-public class BusRouteService {
+public class BusStopService {
     SqlSessionFactory sqlSessionFactory;
 
-    public BusRouteService() {
+    public BusStopService() {
         try {
             Reader reader = Resources.getResourceAsReader("myBatis-config.xml");
             this.sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
@@ -22,21 +23,21 @@ public class BusRouteService {
 
     }
 
-    public BusRoute getById(Long id) {
-        BusRoute busRoute;
+    public BusStop getById(Long id) {
+        BusStop busStop;
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
-            busRoute = busRouteDAO.getEntityById(id);
+            IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
+            busStop = busStopDAO.getEntityById(id);
         }
-        return busRoute;
+        return busStop;
     }
 
-    public BusRoute save(BusRoute busRoute) {
+    public BusStop save(BusStop busStop) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
+            IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
 
             try {
-                busRouteDAO.createEntity(busRoute);
+                busStopDAO.createEntity(busStop);
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
@@ -46,15 +47,15 @@ public class BusRouteService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return busRoute;
+        return busStop;
     }
 
-    public void update(BusRoute busRoute) {
+    public void update(BusStop busStop) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
+            IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
 
             try {
-                busRouteDAO.updateEntity(busRoute);
+                busStopDAO.updateEntity(busStop);
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
@@ -68,10 +69,10 @@ public class BusRouteService {
 
     public void removeById(long id) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
+            IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
 
             try {
-                busRouteDAO.removeEntity(id);
+                busStopDAO.removeEntity(id);
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
