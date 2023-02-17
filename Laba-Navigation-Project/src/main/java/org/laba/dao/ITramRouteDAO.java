@@ -1,4 +1,4 @@
 package org.laba.dao;
 
-public interface ITramRouteDAO {
+public interface ITramRouteDAO extends IBaseDAO<TramRoute>{
 }

@@ -1,4 +1,4 @@
 package org.laba.dao;
 
-public interface ITransitPointDAO {
+public interface ITransitPointDAO extends IBaseDAO<TransitPoint>{
 }

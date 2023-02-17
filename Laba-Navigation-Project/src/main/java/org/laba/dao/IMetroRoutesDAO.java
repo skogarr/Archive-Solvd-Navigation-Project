@@ -1,4 +1,4 @@
 package org.laba.dao;
 
-public interface IMetroRoutesDAO {
+public interface IMetroRoutesDAO extends IBaseDAO<MetroRoute>{
 }

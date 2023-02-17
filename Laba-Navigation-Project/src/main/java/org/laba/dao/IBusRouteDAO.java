@@ -1,5 +1,5 @@
 package org.laba.dao;
 
-public interface IBusRouteDAO {
+public interface IBusRouteDAO extends IBaseDAO<BusRoute>{
 
 }
