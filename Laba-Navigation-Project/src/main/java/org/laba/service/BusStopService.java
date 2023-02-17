@@ -2,15 +2,17 @@ package org.laba.service;
 
 //import mapper.BusStop;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.laba.model.BusRoute;
 import org.laba.model.BusStop;
 import org.laba.model.TransitPoint;
+import org.laba.request.BusStopRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import org.laba.request.BusStopRequest;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -35,16 +37,13 @@ public class BusStopService {
         busStopDAO.createEntity(new BusStop(request.getId(), request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
         BusRoute busRoute = new BusRoute();
         TransitPoint transitPoint = new TransitPoint();
-        if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
+        if (request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        else if(request.getBusRouteId() != busRoute.getId() && request.getTransitPointId() == transitPoint.getId()){
+        } else if (request.getBusRouteId() != busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
             busRouteDAO.createEntity(new BusRoute(request.getBusRouteId(), null));
-        }
-        else if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() != transitPoint.getId()){
+        } else if (request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() != transitPoint.getId()) {
             transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
-        }
-        else{
+        } else {
             busRouteDAO.createEntity(new BusRoute(request.getBusRouteId(), null));
             transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }
@@ -56,16 +55,13 @@ public class BusStopService {
         busStopDAO.updateEntity(new BusStop(request.getId(), request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
         BusRoute busRoute = new BusRoute();
         TransitPoint transitPoint = new TransitPoint();
-        if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
+        if (request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
             return busStopDAO.getEntityById(id);
-        }
-        else if(request.getBusRouteId() != busRoute.getId() && request.getTransitPointId() == transitPoint.getId()){
+        } else if (request.getBusRouteId() != busRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
             busRouteDAO.createEntity(new BusRoute(request.getBusRouteId(), null));
-        }
-        else if(request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() != transitPoint.getId()){
+        } else if (request.getBusRouteId() == busRoute.getId() && request.getTransitPointId() != transitPoint.getId()) {
             transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
-        }
-        else{
+        } else {
             busRouteDAO.createEntity(new BusRoute(request.getBusRouteId(), null));
             transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }

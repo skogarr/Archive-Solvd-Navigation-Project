@@ -1,10 +1,11 @@
 package org.laba.request;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
-public class TramRouteRequest{
+public class TramRouteRequest {
 
     private long id;
 
