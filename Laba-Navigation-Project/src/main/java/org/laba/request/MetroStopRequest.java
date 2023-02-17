@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MetroStopsRequest {
+public class MetroStopRequest {
     private long id;
 
     private long metroRouteId;

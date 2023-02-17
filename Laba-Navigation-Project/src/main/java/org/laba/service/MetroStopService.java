@@ -6,9 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.laba.model.MetroRoute;
-import org.laba.model.MetroStops;
+import org.laba.model.MetroStop;
 import org.laba.model.TransitPoint;
-import org.laba.request.MetroStopsRequest;
+import org.laba.request.MetroStopRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,20 +21,20 @@ import java.util.Optional;
 @AllArgsConstructor
 @ToString
 @Service
-public class MetroStopsService {
+public class MetroStopService {
 
-    private final IMetroStopsDAO metroStopsDAO;
+    private final IMetroStopDAO metroStopDAO;
     private final IMetroRouteDAO metroRouteDAO;
     private final ITransitPointDAO transitPointDAO;
 
     @GetMapping("/{id}")
-    public Optional<MetroStops> find(@PathVariable long id) {
-        return Optional.ofNullable(metroStopsDAO.getEntityById(id));
+    public Optional<MetroStop> find(@PathVariable long id) {
+        return Optional.ofNullable(metroStopDAO.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity create(@Valid @RequestBody MetroStopsRequest request) {
-        metroStopsDAO.createEntity(new MetroStops(request.getId(), request.getMetroRouteId(), request.getTransitPointId(), request.getStopNo()));
+    public ResponseEntity create(@Valid @RequestBody MetroStopRequest request) {
+        metroStopDAO.createEntity(new MetroStop(request.getId(), request.getMetroRouteId(), request.getTransitPointId(), request.getStopNo()));
         MetroRoute metroRoute = new MetroRoute();
         TransitPoint transitPoint = new TransitPoint();
         if (request.getMetroRouteId() == metroRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
@@ -51,12 +51,12 @@ public class MetroStopsService {
     }
 
     @PutMapping("/{id}")
-    public MetroStops update(@PathVariable long id, @Valid @RequestBody MetroStopsRequest request) {
-        metroStopsDAO.updateEntity(new MetroStops(request.getId(), request.getMetroRouteId(), request.getTransitPointId(), request.getStopNo()));
+    public MetroStop update(@PathVariable long id, @Valid @RequestBody MetroStopRequest request) {
+        metroStopDAO.updateEntity(new MetroStop(request.getId(), request.getMetroRouteId(), request.getTransitPointId(), request.getStopNo()));
         MetroRoute metroRoute = new MetroRoute();
         TransitPoint transitPoint = new TransitPoint();
         if (request.getMetroRouteId() == metroRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
-            return metroStopsDAO.getEntityById(id);
+            return metroStopDAO.getEntityById(id);
         } else if (request.getMetroRouteId() != metroRoute.getId() && request.getTransitPointId() == transitPoint.getId()) {
             metroRouteDAO.createEntity(new MetroRoute(request.getMetroRouteId(), null));
         } else if (request.getMetroRouteId() == metroRoute.getId() && request.getTransitPointId() != transitPoint.getId()) {
@@ -65,12 +65,12 @@ public class MetroStopsService {
             metroRouteDAO.createEntity(new MetroRoute(request.getMetroRouteId(), null));
             transitPointDAO.createEntity(new TransitPoint(request.getTransitPointId()));
         }
-        return metroStopsDAO.getEntityById(id);
+        return metroStopDAO.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable long id) {
-        metroStopsDAO.removeEntity(id);
+        metroStopDAO.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
 }

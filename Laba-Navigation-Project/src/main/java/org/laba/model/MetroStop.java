@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class MetroStops {
+public class MetroStop {
     private long id;
 
     private long metroRouteId;
