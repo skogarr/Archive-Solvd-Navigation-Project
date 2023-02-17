@@ -24,12 +24,12 @@ public class MetroStopsService {
     private final TransitPointMapper transitPointMapper;
 
     @GetMapping("/{id}")
-    public Optional<MetroStops> findMetroStops(@PathVariable long id) {
+    public Optional<MetroStops> find(@PathVariable long id) {
         return Optional.ofNullable(metroStopsMapper.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity createMetroStops(@Valid @RequestBody  MetroStopsRequest request) {
+    public ResponseEntity create(@Valid @RequestBody  MetroStopsRequest request) {
         metroStopsMapper.createEntity(new MetroStops(request.getId(), request.getMetroRouteId(), request.getTransitPointId(), request.getStopNo()));
         MetroRoute metroRoute = new MetroRoute();
         TransitPoint transitPoint = new TransitPoint();
@@ -50,7 +50,7 @@ public class MetroStopsService {
     }
 
     @PutMapping("/{id}")
-    public MetroStops updateMetroStops(@PathVariable long id, @Valid @RequestBody MetroStopsRequest request) {
+    public MetroStops update(@PathVariable long id, @Valid @RequestBody MetroStopsRequest request) {
         metroStopsMapper.updateEntity(new MetroStops(request.getId(), request.getMetroRouteId(), request.getTransitPointId(), request.getStopNo()));
         MetroRoute metroRoute = new MetroRoute();
         TransitPoint transitPoint = new TransitPoint();
@@ -71,7 +71,7 @@ public class MetroStopsService {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteMetroStops(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         metroStopsMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }

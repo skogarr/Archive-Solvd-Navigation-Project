@@ -20,24 +20,24 @@ public class TransitPointService {
     private final TransitPointMapper transitPointMapper;
 
     @GetMapping("/{id}")
-    public Optional<TransitPoint> findTransitPoint(@PathVariable long id) {
+    public Optional<TransitPoint> find(@PathVariable long id) {
         return Optional.ofNullable(transitPointMapper.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity createTransitPoint(@Valid @RequestBody TransitPointRequest request) {
+    public ResponseEntity create(@Valid @RequestBody TransitPointRequest request) {
         transitPointMapper.createEntity(new TransitPoint(request.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public TransitPoint updateTransitPoint(@PathVariable long id, @Valid @RequestBody TransitPointRequest request) {
+    public TransitPoint update(@PathVariable long id, @Valid @RequestBody TransitPointRequest request) {
         transitPointMapper.updateEntity(new TransitPoint(id));
         return transitPointMapper.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteTransitPoint(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         transitPointMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }

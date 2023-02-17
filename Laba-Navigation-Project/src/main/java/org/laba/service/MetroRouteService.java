@@ -21,24 +21,24 @@ public class MetroRouteService {
     private final MetroRouteMapper metroRouteMapper;
 
     @GetMapping("/{id}")
-    public Optional<MetroRoute> findMetroRoute(@PathVariable long id) {
+    public Optional<MetroRoute> find(@PathVariable long id) {
         return Optional.ofNullable(metroRouteMapper.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity createMetroRoute(@Valid @RequestBody MetroRouteRequest request) {
+    public ResponseEntity create(@Valid @RequestBody MetroRouteRequest request) {
         metroRouteMapper.createEntity(new MetroRoute(request.getId(), request.getRouteName()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public MetroRoute updateMetroRoute(@PathVariable long id, @Valid @RequestBody MetroRouteRequest request) {
+    public MetroRoute update(@PathVariable long id, @Valid @RequestBody MetroRouteRequest request) {
         metroRouteMapper.updateEntity(new MetroRoute(id, request.getRouteName()));
         return metroRouteMapper.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteMetroRoute(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         metroRouteMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }

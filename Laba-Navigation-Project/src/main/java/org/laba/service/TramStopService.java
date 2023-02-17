@@ -24,12 +24,12 @@ public class TramStopService {
     private final TransitPointMapper transitPointMapper;
 
     @GetMapping("/{id}")
-    public Optional<TramStop> findTramStop(@PathVariable long id) {
+    public Optional<TramStop> find(@PathVariable long id) {
         return Optional.ofNullable(tramStopMapper.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity createTramStop(@Valid @RequestBody TramStopRequest request) {
+    public ResponseEntity create(@Valid @RequestBody TramStopRequest request) {
         tramStopMapper.createEntity(new TramStop(request.getId(), request.getTramRouteId(), request.getTransitPointId(), request.getStopNo()));
         TramRoute tramRoute = new TramRoute();
         TransitPoint transitPoint = new TransitPoint();
@@ -50,7 +50,7 @@ public class TramStopService {
     }
 
     @PutMapping("/{id}")
-    public TramStop updateTramStop(@PathVariable long id, @Valid @RequestBody TramStopRequest request) {
+    public TramStop update(@PathVariable long id, @Valid @RequestBody TramStopRequest request) {
         tramStopMapper.updateEntity(new TramStop(request.getId(), request.getTramRouteId(), request.getTransitPointId(), request.getStopNo()));
         TramRoute tramRoute = new TramRoute();
         TransitPoint transitPoint = new TransitPoint();
@@ -71,7 +71,7 @@ public class TramStopService {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteTramStop(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         tramStopMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }

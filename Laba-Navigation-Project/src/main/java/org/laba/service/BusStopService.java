@@ -26,12 +26,12 @@ public class BusStopService {
     private final TransitPointMapper transitPointMapper;
 
     @GetMapping("/{id}")
-    public Optional<BusStop> findBusStop(@PathVariable long id) {
+    public Optional<BusStop> find(@PathVariable long id) {
         return Optional.ofNullable(busStopMapper.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity createBusStop(@Valid @RequestBody BusStopRequest request) {
+    public ResponseEntity create(@Valid @RequestBody BusStopRequest request) {
         busStopMapper.createEntity(new BusStop(request.getId(), request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
         BusRoute busRoute = new BusRoute();
         TransitPoint transitPoint = new TransitPoint();
@@ -52,7 +52,7 @@ public class BusStopService {
     }
 
     @PutMapping("/{id}")
-    public BusStop updateBusStop(@PathVariable long id, @Valid @RequestBody BusStopRequest request) {
+    public BusStop update(@PathVariable long id, @Valid @RequestBody BusStopRequest request) {
         busStopMapper.updateEntity(new BusStop(request.getId(), request.getBusRouteId(), request.getTransitPointId(), request.getStopNo()));
         BusRoute busRoute = new BusRoute();
         TransitPoint transitPoint = new TransitPoint();
@@ -73,7 +73,7 @@ public class BusStopService {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteBusStop(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         busStopMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }

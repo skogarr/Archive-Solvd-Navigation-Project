@@ -20,24 +20,24 @@ public class TramRouteService {
     private final TramRouteMapper tramRouteMapper;
 
     @GetMapping("/{id}")
-    public Optional<TramRoute> findTramRoute(@PathVariable long id) {
+    public Optional<TramRoute> find(@PathVariable long id) {
         return Optional.ofNullable(tramRouteMapper.getEntityById(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity createTramRoute(@Valid @RequestBody TramRouteRequest request) {
+    public ResponseEntity create(@Valid @RequestBody TramRouteRequest request) {
         tramRouteMapper.createEntity(new TramRoute(request.getId(), request.getRouteName()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public TramRoute updateTramRoute(@PathVariable long id, @Valid @RequestBody TramRouteRequest request) {
+    public TramRoute update(@PathVariable long id, @Valid @RequestBody TramRouteRequest request) {
         tramRouteMapper.updateEntity(new TramRoute(id, request.getRouteName()));
         return tramRouteMapper.getEntityById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteTramRoute(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         tramRouteMapper.removeEntity(id);
         return ResponseEntity.noContent().build();
     }
