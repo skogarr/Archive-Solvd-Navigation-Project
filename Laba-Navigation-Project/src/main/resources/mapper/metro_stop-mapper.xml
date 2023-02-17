@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.IMetroStopDAO">
+
+    <sql id="body">
+        ms.id as metro_stop_id,
+        ms.metro_route_id as metro_route_id,
+        ms.transit_point_id as transit_point_id,
+        ms.stop_no as stop_no
+    </sql>
+
+    <select id="getEntityById" resultMap="metroStopResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        metro_stops ms
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectMetroRoute" resultType="org.laba.model.MetroRoute">
+        SELECT * FROM metro_routes WHERE id= #{id}
+    </select>
+
+    <select id="selectTransitPoint" resultType="org.laba.model.TransitPoint">
+        SELECT * FROM transit_points WHERE id= #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO metro_stops (metro_route_id, transit_point_id, stop_no)
+        VALUES (#{metroRoute.id}, #{transitPoint.id}, #{stop_no})
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE metro_stops SET
+        metro_route_id = #{metroRoute.id},
+        transit_point_id = #{transitPoint.id},
+        stop_no = #{stop_no}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM metro_stops WHERE id = #{id}
+    </delete>
+
+    <resultMap id="metroStopResultMap" type="org.laba.model.MetroStop" autoMapping="false">
+        <id column="metro_stop_id" property="id"/>
+        <result column="stop_no" property="stopNo"/>
+        <association property="metroRoute" column="metro_route_id" javaType="org.laba.model.MetroRoute" select="selectMetroRoute"/>
+        <association property="transitPoint" column="transit_point_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+    </resultMap>
+</mapper>
