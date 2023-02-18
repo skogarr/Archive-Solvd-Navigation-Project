@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.ITravelWeightDAO">
+
+    <sql id="body">
+        tw.transit_point_a_id as transit_point_a_id,
+        tw.transit_point_b_id as transit_point_b_id,
+        tw.car_weight as car_weight,
+        tw.bus_weight as bus_weight,
+        tw.tram_weight as tram_weight,
+        tw.metro_weight as tram_weight
+    </sql>
+
+    <select id="getEntityById" resultMap="travelWeightResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        travel_weights
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectTransitPoint" resultType="org.laba.model.TransitPoint">
+        SELECT * FROM transit_points WHERE id= #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO travel_weights (transit_point_a_id, transit_point_b_id, car_weight, bus_weight, tram_weight, metro_weight)
+        VALUES (#{transitPointA.id}, #{transitPointB.id}, #{car_weight}, #{bus_weight}, #{tram_weight}, #{metro_weight} )
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE travel_weights SET
+        transit_point_a_id = #{transitPointA.id},
+        transit_point_b_id = #{transitPointB.id},
+        car_weight = #{car_weight},
+        bus_weight = #{bus_weight},
+        tram_weight = #{tram_weight},
+        metro_weight = #{metro_weight},
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM travel_weights WHERE id = #{id}
+    </delete>
+
+    <resultMap id="travelWeightResultMap" type="org.laba.model.travelWeight" autoMapping="false">
+        <result column="car_weight" property="carWeight" />
+        <result column="bus_weight" property="busWeight" />
+        <result column="tram_weight" property="tramWeight" />
+        <result column="metro_weight" property="metroWeight" />
+        <association property="transitPointA" column="transit_point_a_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+        <association property="transitPointB" column="transit_point_b_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+    </resultMap>
+</mapper>

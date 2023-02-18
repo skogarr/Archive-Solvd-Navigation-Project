@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="defaultReadOnly" value="false"/>
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/transit_point-mapper.xml" />
+        <mapper resource="mapper/bus_route-mapper.xml" />
+        <mapper resource="mapper/bus_stop-mapper.xml" />
+        <mapper resource="mapper/distance_between-mapper.xml" />
+        <mapper resource="mapper/metro_route-mapper.xml" />
+        <mapper resource="mapper/metro_stop-mapper.xml" />
+        <mapper resource="mapper/tram_route-mapper.xml" />
+        <mapper resource="mapper/tram_stop-mapper.xml" />
+        <mapper resource="mapper/travel_weight-mapper.xml" />
+    </mappers>
+</configuration>

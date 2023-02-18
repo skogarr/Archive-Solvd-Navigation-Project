@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.IBusStopDAO">
+
+    <sql id="body">
+        bs.id as bus_stop_id,
+        bs.bus_route_id as bus_route_id,
+        bs.transit_point_id as transit_point_id,
+        bs.stop_no as stop_no
+    </sql>
+
+    <select id="getEntityById" resultMap="busStopResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        bus_stops bs
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectBusRoute" resultType="org.laba.model.BusRoute">
+        SELECT * FROM bus_routes WHERE id= #{id}
+    </select>
+
+    <select id="selectTransitPoint" resultType="org.laba.model.TransitPoint">
+        SELECT * FROM transit_points WHERE id= #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO bus_stops (bus_route_id, transit_point_id, stop_no)
+        VALUES (#{busRoute.id}, #{transitPoint.id}, #{stop_no})
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE bus_stops SET
+        bus_route_id = #{busRoute.id},
+        transit_point_id = #{transitPoint.id},
+        stop_no = #{stop_no}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM bus_stops WHERE id = #{id}
+    </delete>
+
+    <resultMap id="busStopResultMap" type="org.laba.model.BusStop" autoMapping="false">
+        <id column="bus_stop_id" property="id"/>
+        <result column="stop_no" property="stopNo"/>
+        <association property="busRoute" column="bus_route_id" javaType="org.laba.model.BusRoute" select="selectBusRoute"/>
+        <association property="transitPoint" column="transit_point_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+    </resultMap>
+</mapper>
