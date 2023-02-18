@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IMetroStopDAO;
 import org.laba.dao.ITramStopDAO;
+import org.laba.model.TramStop;
 
 import java.io.IOException;
 import java.io.Reader;

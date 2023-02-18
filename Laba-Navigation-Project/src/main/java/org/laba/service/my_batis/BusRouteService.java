@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IBusRouteDAO;
+import org.laba.model.BusRoute;
 
 import java.io.IOException;
 import java.io.Reader;

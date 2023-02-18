@@ -4,8 +4,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.laba.dao.ITransitPointDAO;
 import org.laba.dao.ITravelWeightDAO;
+import org.laba.model.TravelWeight;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -29,7 +29,7 @@ public class TravelWeightService {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
             travelWeight = travelWeightDAO.getEntityById(id);
         }
-        return travelWeightt;
+        return travelWeight;
     }
 
     public TravelWeight save(TravelWeight travelWeight) {

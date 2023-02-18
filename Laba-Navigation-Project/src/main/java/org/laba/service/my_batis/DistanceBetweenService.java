@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IBusStopDAO;
 import org.laba.dao.IDistanceBetweenDAO;
+import org.laba.model.DistanceBetween;
 
 import java.io.IOException;
 import java.io.Reader;
