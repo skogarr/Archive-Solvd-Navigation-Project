@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit" />
+    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IBusRouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IBusRouteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IBusStopDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IBusStopDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IDistanceBetweenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IDistanceBetweenDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IMetroRouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IMetroRouteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IMetroStopDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IMetroStopDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITramRouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITramRouteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITramStopDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITramStopDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITransitPointDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITransitPointDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITravelWeightDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITravelWeightDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="mod-ser" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -132,7 +152,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
