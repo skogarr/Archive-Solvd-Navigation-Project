@@ -20,6 +20,15 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getTravelWeightByTransitPointAidAndTransitPointBid" resultMap="travelWeightResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        travel_weights tw
+        WHERE transit_point_a_id = #{param1}
+        AND transit_point_b_id = #{param2}
+    </select>
+
     <select id="selectTransitPoint" resultType="org.laba.model.TransitPoint">
         SELECT * FROM transit_points WHERE id= #{id}
     </select>

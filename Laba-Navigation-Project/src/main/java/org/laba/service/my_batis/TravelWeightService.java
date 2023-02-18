@@ -32,6 +32,15 @@ public class TravelWeightService {
         return travelWeight;
     }
 
+    public TravelWeight getTravelWeightByTransitPointAidAndTransitPointBid(long transitPointAid, long transitPointBid) {
+        TravelWeight travelWeight;
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
+            travelWeight = travelWeightDAO.getTravelWeightByTransitPointAidAndTransitPointBid(transitPointAid, transitPointBid);
+        }
+        return travelWeight;
+    }
+
     public TravelWeight save(TravelWeight travelWeight) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);

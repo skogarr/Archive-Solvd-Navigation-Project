@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IBusStopDAO;
 import org.laba.dao.IDistanceBetweenDAO;
+import org.laba.dao.ITravelWeightDAO;
 import org.laba.model.DistanceBetween;
+import org.laba.model.TravelWeight;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -29,6 +31,15 @@ public class DistanceBetweenService {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IDistanceBetweenDAO distanceBetweenDAO = sqlSession.getMapper(IDistanceBetweenDAO.class);
             distanceBetween = distanceBetweenDAO.getEntityById(id);
+        }
+        return distanceBetween;
+    }
+
+    public DistanceBetween getDistanceByTransitPointAidAndTransitPointBid(long transitPointAid, long transitPointBid) {
+        DistanceBetween distanceBetween;
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            IDistanceBetweenDAO distanceBetweenDAO = sqlSession.getMapper(IDistanceBetweenDAO.class);
+            distanceBetween = distanceBetweenDAO.getDistanceByTransitPointAidAndTransitPointBid(transitPointAid, transitPointBid);
         }
         return distanceBetween;
     }
