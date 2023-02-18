@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.IBusRouteDAO">
+
+    <sql id="body">
+        br.id as bus_route_id,
+        br.route_name as route_name
+    </sql>
+
+    <select id="getEntityById" resultMap="busRouteResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        bus_routes br
+        WHERE id = #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO bus_routes (route_name)
+        VALUES (#{route_name})
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE bus_routes SET
+        route_name = #{route_name}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM bus_routes WHERE id = #{id}
+    </delete>
+
+    <resultMap id="busRouteResultMap" type="org.laba.model.BusRoute" autoMapping="false">
+        <id column="bus_route_id" property="id"/>
+        <result column="route_name" property="routeName"/>
+    </resultMap>
+</mapper>
