@@ -9,9 +9,9 @@ import lombok.*;
 @ToString
 public class DistanceBetween {
 
-    private long transitPointAId;
+    private TransitPoint transitPointA;
 
-    private long transitPointBId;
+    private TransitPoint transitPointB;
 
     private int distance;
 

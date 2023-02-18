@@ -10,6 +10,7 @@ import org.laba.model.TransitPoint;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 public class TransitPointService {
     SqlSessionFactory sqlSessionFactory;
@@ -31,6 +32,15 @@ public class TransitPointService {
             transitPoint = transitPointDAO.getEntityById(id);
         }
         return transitPoint;
+    }
+
+    public List<TransitPoint> getAllTransitPoints() {
+        List<TransitPoint> resulList;
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
+            resulList = transitPointDAO.getAllTransitPoints();
+        }
+        return resulList;
     }
 
     public TransitPoint save(TransitPoint transitPoint) {

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
-<mapper namespace="org.laba.dao.interfaces.ITransitPointDAO">
+<mapper namespace="org.laba.dao.ITransitPointDAO">
 
     <select id="getEntityById" resultMap="transitPointResultMap">
         SELECT
         id as transit_point_id
         FROM
-        transit_points a
+        transit_points
         WHERE id = #{id}
+    </select>
+
+    <select id="getAllTransitPoints" resultMap="transitPointResultMap" >
+        SELECT
+        id as transit_point_id
+        FROM
+        transit_points
     </select>
 
     <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
@@ -20,7 +27,7 @@
         DELETE FROM transit_points WHERE id = #{id}
     </delete>
 
-    <resultMap id="transitPointsResultMap" type="org.laba.model.TransitPoint" autoMapping="false">
+    <resultMap id="transitPointResultMap" type="org.laba.model.TransitPoint" autoMapping="false">
         <id column="transit_point_id" property="id"/>
     </resultMap>
 </mapper>
