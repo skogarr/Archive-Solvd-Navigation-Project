@@ -16,7 +16,7 @@
         SELECT
         <include refid="body"/>
         FROM
-        travel_weights
+        travel_weights tw
         WHERE id = #{id}
     </select>
 
@@ -44,7 +44,7 @@
         DELETE FROM travel_weights WHERE id = #{id}
     </delete>
 
-    <resultMap id="travelWeightResultMap" type="org.laba.model.travelWeight" autoMapping="false">
+    <resultMap id="travelWeightResultMap" type="org.laba.model.TravelWeight" autoMapping="false">
         <result column="car_weight" property="carWeight" />
         <result column="bus_weight" property="busWeight" />
         <result column="tram_weight" property="tramWeight" />
