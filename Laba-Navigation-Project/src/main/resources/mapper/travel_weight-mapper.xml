@@ -9,7 +9,7 @@
         tw.car_weight as car_weight,
         tw.bus_weight as bus_weight,
         tw.tram_weight as tram_weight,
-        tw.metro_weight as tram_weight
+        tw.metro_weight as metro_weight
     </sql>
 
     <select id="getEntityById" resultMap="travelWeightResultMap">
