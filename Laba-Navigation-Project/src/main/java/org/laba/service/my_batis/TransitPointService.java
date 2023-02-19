@@ -4,16 +4,26 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.laba.dao.ITramStopDAO;
 import org.laba.dao.ITransitPointDAO;
+import org.laba.exception.MapperException;
+import org.laba.exception.RemoveByIdException;
+import org.laba.exception.SaveException;
+import org.laba.exception.UpdateException;
 import org.laba.model.TransitPoint;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
+import static org.laba.enums.Error.*;
+import static org.laba.enums.Error.UPDATE_ERROR;
+
 public class TransitPointService {
     SqlSessionFactory sqlSessionFactory;
+    Logger logger = Logger.getLogger(TransitPointService.class.getName());
 
     public TransitPointService() {
         try {
@@ -43,7 +53,7 @@ public class TransitPointService {
         return resulList;
     }
 
-    public TransitPoint save(TransitPoint transitPoint) {
+    public TransitPoint save(TransitPoint transitPoint) throws MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
 
@@ -52,16 +62,18 @@ public class TransitPointService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.log(Level.ERROR, SAVE_ERROR.getDescription(), e);
+                throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return transitPoint;
     }
 
-    public void update(TransitPoint transitPoint) {
+    public void update(TransitPoint transitPoint) throws MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
 
@@ -70,15 +82,17 @@ public class TransitPointService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.log(Level.ERROR, UPDATE_ERROR.getDescription(), e);
+                throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 
-    public void removeById(long id) {
+    public void removeById(long id) throws MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
 
@@ -87,11 +101,13 @@ public class TransitPointService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.log(Level.ERROR, REMOVE_BY_ID_ERROR.getDescription(), e);
+                throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 }

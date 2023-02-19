@@ -1,17 +1,22 @@
 package org.laba.service.my_batis;
 
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.*;
 import org.laba.dao.IBusRouteDAO;
+import org.laba.exception.*;
 import org.laba.model.BusRoute;
-
 import java.io.IOException;
 import java.io.Reader;
+import static org.laba.enums.Error.*;
+
 
 public class BusRouteService {
     SqlSessionFactory sqlSessionFactory;
+    Logger logger = Logger.getLogger(BusRouteService.class.getName());
 
     public BusRouteService() {
         try {
@@ -32,7 +37,7 @@ public class BusRouteService {
         return busRoute;
     }
 
-    public BusRoute save(BusRoute busRoute) {
+    public BusRoute save(BusRoute busRoute) throws MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
 
@@ -41,16 +46,18 @@ public class BusRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.log(Level.ERROR, SAVE_ERROR.getDescription(), e);
+                throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return busRoute;
     }
 
-    public void update(BusRoute busRoute) {
+    public void update(BusRoute busRoute) throws MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
 
@@ -59,15 +66,17 @@ public class BusRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.log(Level.ERROR, UPDATE_ERROR.getDescription(), e);
+                throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 
-    public void removeById(long id) {
+    public void removeById(long id) throws MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
 
@@ -76,11 +85,13 @@ public class BusRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.log(Level.ERROR, REMOVE_BY_ID_ERROR.getDescription(), e);
+                throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 }
