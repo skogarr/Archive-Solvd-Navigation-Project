@@ -1,10 +1,13 @@
 package org.laba.service.my_batis;
 
+import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.laba.dao.ITransitPointDAO;
 import org.laba.dao.ITravelWeightDAO;
+import org.laba.model.TransitPoint;
 import org.laba.model.TravelWeight;
 
 import java.io.IOException;
@@ -91,5 +94,14 @@ public class TravelWeightService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<TravelWeight> getAllTravelWeights() {
+        List<TravelWeight> resultList;
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
+            resultList = travelWeightDAO.getAllTravelWeights();
+        }
+        return resultList;
     }
 }
