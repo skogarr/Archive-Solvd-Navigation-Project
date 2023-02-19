@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="refactoring + dependencies">
+    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="find by transit points methods in travel weights and distance between">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IDistanceBetweenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/IDistanceBetweenDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITravelWeightDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/dao/ITravelWeightDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/model/TravelWeight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/model/TravelWeight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/mapper/distance_between-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/mapper/distance_between-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/mapper/travel_weight-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/mapper/travel_weight-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/target/classes/org/laba/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/target/classes/org/laba/Main.class" afterDir="false" />
     </list>
@@ -108,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676586171028</updated>
-      <workItem from="1676738244667" duration="946000" />
+      <workItem from="1676738244667" duration="1413000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1676586945739</created>
@@ -173,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676738280258</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="find by transit points methods in travel weights and distance between">
+      <created>1676739279771</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676739279771</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +194,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="refactoring + dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring + dependencies" />
+    <MESSAGE value="find by transit points methods in travel weights and distance between" />
+    <option name="LAST_COMMIT_MESSAGE" value="find by transit points methods in travel weights and distance between" />
   </component>
 </project>
