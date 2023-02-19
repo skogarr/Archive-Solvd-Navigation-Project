@@ -43,7 +43,7 @@ public class MetroRouteService {
         return metroRoute;
     }
 
-    public MetroRoute save(MetroRoute metroRoute) throws MapperException {
+    public MetroRoute save(MetroRoute metroRoute) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroRouteDAO metroRouteDAO = sqlSession.getMapper(IMetroRouteDAO.class);
 
@@ -63,7 +63,7 @@ public class MetroRouteService {
         return metroRoute;
     }
 
-    public void update(MetroRoute metroRoute) throws MapperException {
+    public void update(MetroRoute metroRoute) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroRouteDAO metroRouteDAO = sqlSession.getMapper(IMetroRouteDAO.class);
 
@@ -82,7 +82,7 @@ public class MetroRouteService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroRouteDAO metroRouteDAO = sqlSession.getMapper(IMetroRouteDAO.class);
 

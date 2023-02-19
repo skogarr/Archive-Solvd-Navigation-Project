@@ -1,5 +1,6 @@
 package org.laba.service.my_batis;
 
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -43,7 +44,7 @@ public class MetroStopService {
         return metroStop;
     }
 
-    public MetroStop save(MetroStop metroStop) throws MapperException {
+    public MetroStop save(MetroStop metroStop) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
 
@@ -63,7 +64,7 @@ public class MetroStopService {
         return metroStop;
     }
 
-    public void update(MetroStop metroStop) throws MapperException {
+    public void update(MetroStop metroStop) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
 
@@ -82,7 +83,7 @@ public class MetroStopService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
 

@@ -1,5 +1,6 @@
 package org.laba.service.my_batis;
 
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -51,7 +52,7 @@ public class TravelWeightService {
         return travelWeight;
     }
 
-    public TravelWeight save(TravelWeight travelWeight) throws MapperException {
+    public TravelWeight save(TravelWeight travelWeight) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
 
@@ -71,7 +72,7 @@ public class TravelWeightService {
         return travelWeight;
     }
 
-    public void update(TravelWeight travelWeight) throws MapperException {
+    public void update(TravelWeight travelWeight) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
 
@@ -90,7 +91,7 @@ public class TravelWeightService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
 

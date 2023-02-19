@@ -53,7 +53,7 @@ public class TransitPointService {
         return resulList;
     }
 
-    public TransitPoint save(TransitPoint transitPoint) throws MapperException {
+    public TransitPoint save(TransitPoint transitPoint) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
 
@@ -73,7 +73,7 @@ public class TransitPointService {
         return transitPoint;
     }
 
-    public void update(TransitPoint transitPoint) throws MapperException {
+    public void update(TransitPoint transitPoint) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
 
@@ -92,7 +92,7 @@ public class TransitPointService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITransitPointDAO transitPointDAO = sqlSession.getMapper(ITransitPointDAO.class);
 

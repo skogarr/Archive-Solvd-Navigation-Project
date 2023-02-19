@@ -39,7 +39,7 @@ public class BusStopService {
         return busStop;
     }
 
-    public BusStop save(BusStop busStop) throws MapperException {
+    public BusStop save(BusStop busStop) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
 
@@ -59,7 +59,7 @@ public class BusStopService {
         return busStop;
     }
 
-    public void update(BusStop busStop) throws MapperException {
+    public void update(BusStop busStop) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
 
@@ -78,7 +78,7 @@ public class BusStopService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
 

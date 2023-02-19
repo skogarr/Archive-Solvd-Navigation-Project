@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_21_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_surefire_surefire_logger_api_2_22_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/enums/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/Laba-Navigation-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/Laba-Navigation-Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroRouteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroStopService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramRouteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676738280258</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="commit">
+      <created>1676847726911</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676847726911</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,8 +179,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit" />
     <MESSAGE value="refactoring + dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring + dependencies" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>

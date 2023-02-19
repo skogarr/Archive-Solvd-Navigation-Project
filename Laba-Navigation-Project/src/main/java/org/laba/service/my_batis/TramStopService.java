@@ -43,7 +43,7 @@ public class TramStopService {
         return tramStop;
     }
 
-    public TramStop save(TramStop tramStop) throws MapperException {
+    public TramStop save(TramStop tramStop) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramStopDAO tramStopDAO = sqlSession.getMapper(ITramStopDAO.class);
 
@@ -63,7 +63,7 @@ public class TramStopService {
         return tramStop;
     }
 
-    public void update(TramStop tramStop) throws MapperException {
+    public void update(TramStop tramStop) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramStopDAO tramStopDAO = sqlSession.getMapper(ITramStopDAO.class);
 
@@ -82,7 +82,7 @@ public class TramStopService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramStopDAO tramStopDAO = sqlSession.getMapper(ITramStopDAO.class);
 

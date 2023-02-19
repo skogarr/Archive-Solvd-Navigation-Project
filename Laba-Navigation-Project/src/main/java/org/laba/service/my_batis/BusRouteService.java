@@ -37,7 +37,7 @@ public class BusRouteService {
         return busRoute;
     }
 
-    public BusRoute save(BusRoute busRoute) throws MapperException {
+    public BusRoute save(BusRoute busRoute) throws SaveException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
 
@@ -57,7 +57,7 @@ public class BusRouteService {
         return busRoute;
     }
 
-    public void update(BusRoute busRoute) throws MapperException {
+    public void update(BusRoute busRoute) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
 
@@ -76,7 +76,7 @@ public class BusRouteService {
         }
     }
 
-    public void removeById(long id) throws MapperException {
+    public void removeById(long id) throws RemoveByIdException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusRouteDAO busRouteDAO = sqlSession.getMapper(IBusRouteDAO.class);
 
