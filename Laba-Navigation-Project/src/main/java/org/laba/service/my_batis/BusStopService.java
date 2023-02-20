@@ -13,8 +13,8 @@ import org.laba.exception.UpdateException;
 import org.laba.model.BusStop;
 import java.io.IOException;
 import java.io.Reader;
-import static org.laba.enums.Error.*;
-import static org.laba.enums.Error.UPDATE_ERROR;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class BusStopService {
     SqlSessionFactory sqlSessionFactory;

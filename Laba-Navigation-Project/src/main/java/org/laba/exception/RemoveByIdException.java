@@ -1,7 +1,7 @@
 package org.laba.exception;
 
 import java.util.Objects;
-import static org.laba.enums.Error.REMOVE_BY_ID_ERROR;
+import static org.laba.exception.Error.REMOVE_BY_ID_ERROR;
 
 /**
  * The MapperException wraps all checked standard Java exception and enriches them with a custom error code.

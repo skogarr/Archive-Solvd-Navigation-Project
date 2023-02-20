@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.laba.dao.IBusRouteDAO;
 import org.laba.dao.IMetroRouteDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
@@ -17,8 +16,8 @@ import org.laba.model.MetroRoute;
 import java.io.IOException;
 import java.io.Reader;
 
-import static org.laba.enums.Error.*;
-import static org.laba.enums.Error.UPDATE_ERROR;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class MetroRouteService {
     SqlSessionFactory sqlSessionFactory;

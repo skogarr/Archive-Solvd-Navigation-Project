@@ -2,7 +2,7 @@ package org.laba.exception;
 
 import java.util.Objects;
 
-import static org.laba.enums.Error.UPDATE_ERROR;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 /**
  * The UpdateException wraps all checked standard Java exception and enriches them with a custom error code.

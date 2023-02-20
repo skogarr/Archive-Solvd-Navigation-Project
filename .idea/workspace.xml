@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/enums/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/enums/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/MapperException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/MapperException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/RemoveByIdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/RemoveByIdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/SaveException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/SaveException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/UpdateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/UpdateException.java" afterDir="false" />
-    </list>
+    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676848140917</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="commit">
+      <created>1676910970148</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676910970148</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

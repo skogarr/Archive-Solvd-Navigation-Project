@@ -1,4 +1,4 @@
-package org.laba.enums;
+package org.laba.exception;
 
 /**
  * The Error stores all custom errors for you to find the source of the error easily.

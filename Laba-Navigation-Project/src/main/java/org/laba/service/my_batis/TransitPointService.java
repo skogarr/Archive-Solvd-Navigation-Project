@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.laba.dao.ITramStopDAO;
 import org.laba.dao.ITransitPointDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
@@ -18,8 +17,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
-import static org.laba.enums.Error.*;
-import static org.laba.enums.Error.UPDATE_ERROR;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class TransitPointService {
     SqlSessionFactory sqlSessionFactory;

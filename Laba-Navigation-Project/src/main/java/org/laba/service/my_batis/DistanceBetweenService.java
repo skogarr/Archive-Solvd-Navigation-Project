@@ -1,27 +1,23 @@
 package org.laba.service.my_batis;
 
-import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.laba.dao.IBusStopDAO;
 import org.laba.dao.IDistanceBetweenDAO;
-import org.laba.dao.ITravelWeightDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
 import org.laba.exception.SaveException;
 import org.laba.exception.UpdateException;
 import org.laba.model.DistanceBetween;
-import org.laba.model.TravelWeight;
 
 import java.io.IOException;
 import java.io.Reader;
 
-import static org.laba.enums.Error.*;
-import static org.laba.enums.Error.UPDATE_ERROR;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class DistanceBetweenService {
     SqlSessionFactory sqlSessionFactory;
