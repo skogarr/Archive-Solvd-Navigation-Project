@@ -53,6 +53,13 @@
         DELETE FROM travel_weights WHERE id = #{id}
     </delete>
 
+    <select id="getAllTravelWeights" resultMap="travelWeightResultMap" >
+        SELECT
+        <include refid="body"/>
+        FROM
+        travel_weights tw
+    </select>
+
     <resultMap id="travelWeightResultMap" type="org.laba.model.TravelWeight" autoMapping="false">
         <result column="car_weight" property="carWeight" />
         <result column="bus_weight" property="busWeight" />
