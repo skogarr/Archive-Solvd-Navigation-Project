@@ -1,5 +1,11 @@
 package org.laba.enums;
 
+/**
+ * The Error stores all custom errors for you to find the source of the error easily.
+ * You can use this code to create predefined localized error messages and error codes.
+ *
+ *
+ */
 public enum Error {
         SAVE_ERROR(1L, "An error has occurred while saving record."),
         UPDATE_ERROR(2L, "An error has occurred while updating record."),

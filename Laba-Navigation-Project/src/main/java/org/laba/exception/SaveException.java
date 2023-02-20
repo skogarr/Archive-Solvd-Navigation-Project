@@ -4,6 +4,12 @@ import java.util.Objects;
 
 import static org.laba.enums.Error.SAVE_ERROR;
 
+/**
+ * The SaveException wraps all checked standard Java exception and enriches them with a custom error code.
+ * You can use this code to retrieve localized error messages and to link to our documentation.
+ *
+ *
+ */
 public class SaveException extends Exception {
 
     private static final long serialVersionUID = 11L;

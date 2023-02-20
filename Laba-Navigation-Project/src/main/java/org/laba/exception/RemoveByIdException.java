@@ -3,6 +3,12 @@ package org.laba.exception;
 import java.util.Objects;
 import static org.laba.enums.Error.REMOVE_BY_ID_ERROR;
 
+/**
+ * The MapperException wraps all checked standard Java exception and enriches them with a custom error code.
+ * You can use this code to retrieve localized error messages and to link to our documentation.
+ *
+ *
+ */
 public class RemoveByIdException extends Exception {
 
     private static final long serialVersionUID = 11L;
