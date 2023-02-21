@@ -61,12 +61,12 @@ public class TransitPointService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                logger.log(Level.ERROR, SAVE_ERROR.getDescription(), e);
+                logger.error(SAVE_ERROR.getErrorCode(), e);
                 throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return transitPoint;
@@ -81,12 +81,12 @@ public class TransitPointService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                logger.log(Level.ERROR, UPDATE_ERROR.getDescription(), e);
+                logger.error(UPDATE_ERROR.getErrorCode(), e);
                 throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
@@ -100,12 +100,12 @@ public class TransitPointService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                logger.log(Level.ERROR, REMOVE_BY_ID_ERROR.getDescription(), e);
+                logger.error(REMOVE_BY_ID_ERROR.getErrorCode(), e);
                 throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }

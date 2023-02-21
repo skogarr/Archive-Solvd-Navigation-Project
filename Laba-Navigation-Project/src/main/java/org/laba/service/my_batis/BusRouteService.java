@@ -11,6 +11,8 @@ import org.laba.exception.*;
 import org.laba.model.BusRoute;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.logging.FileHandler;
+
 import static org.laba.exception.Error.*;
 
 
@@ -18,7 +20,7 @@ public class BusRouteService {
     SqlSessionFactory sqlSessionFactory;
     Logger logger = Logger.getLogger(BusRouteService.class.getName());
 
-    public BusRouteService() {
+    public BusRouteService() throws IOException {
         try {
             Reader reader = Resources.getResourceAsReader("myBatis-config.xml");
             this.sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
@@ -46,12 +48,12 @@ public class BusRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                logger.log(Level.ERROR, SAVE_ERROR.getDescription(), e);
+                logger.error(SAVE_ERROR.getErrorCode(), e);
                 throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return busRoute;
@@ -66,12 +68,12 @@ public class BusRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                logger.log(Level.ERROR, UPDATE_ERROR.getDescription(), e);
+                logger.error(UPDATE_ERROR.getErrorCode(), e);
                 throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
@@ -85,12 +87,12 @@ public class BusRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                logger.log(Level.ERROR, REMOVE_BY_ID_ERROR.getDescription(), e);
+                logger.error(REMOVE_BY_ID_ERROR.getErrorCode(), e);
                 throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            logger.log(Level.ERROR, MAPPER_ERROR.getDescription(), e);
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }

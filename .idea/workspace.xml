@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit" />
+    <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/MetroStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/target/classes/org/laba/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/target/classes/org/laba/Main.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="ex" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,15 +59,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/gui" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/gui" />
       <recent name="C:\Users\hp\IdeaProjects\Laba-Navigation-Project\Project\Laba-Navigation-Project" />
       <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/logger" />
+      <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/gui" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.laba.Main" />
       <module name="Laba-Navigation-Project" />
@@ -69,8 +90,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StreetMap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.laba.gui.StreetMap" />
+      <module name="Laba-Navigation-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.laba.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StreetMap" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.StreetMap" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -169,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676910970148</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="commit">
+      <created>1676911127900</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1676911127901</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
