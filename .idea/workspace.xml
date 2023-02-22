@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/MapperException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/MapperException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/RemoveByIdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/RemoveByIdException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/SaveException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/SaveException.java" afterDir="false" />
@@ -229,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677065387496</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit">
+      <created>1677066294944</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1677066294945</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
