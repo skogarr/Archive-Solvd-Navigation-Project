@@ -4,8 +4,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.*;
 import org.laba.dao.IMetroStopDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
@@ -21,7 +20,7 @@ import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class MetroStopService {
     SqlSessionFactory sqlSessionFactory;
-    Logger logger = Logger.getLogger(MetroStopService.class.getName());
+    Logger logger = LogManager.getLogger(MetroStopService.class.getName());
 
     public MetroStopService() {
         try {

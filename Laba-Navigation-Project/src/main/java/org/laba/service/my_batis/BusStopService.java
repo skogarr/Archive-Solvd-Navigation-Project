@@ -4,7 +4,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.*;
+import org.apache.logging.log4j.*;
 import org.laba.dao.IBusStopDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
@@ -18,7 +18,7 @@ import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class BusStopService {
     SqlSessionFactory sqlSessionFactory;
-    Logger logger = Logger.getLogger(BusStopService.class.getName());
+    Logger logger = LogManager.getLogger(BusStopService.class.getName());
 
     public BusStopService() {
         try {

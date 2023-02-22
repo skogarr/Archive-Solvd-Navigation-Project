@@ -1,24 +1,22 @@
 package org.laba.service.my_batis;
 
-
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.*;
+import org.apache.logging.log4j.*;
 import org.laba.dao.IBusRouteDAO;
 import org.laba.exception.*;
 import org.laba.model.BusRoute;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.logging.FileHandler;
 
 import static org.laba.exception.Error.*;
 
 
 public class BusRouteService {
     SqlSessionFactory sqlSessionFactory;
-    Logger logger = Logger.getLogger(BusRouteService.class.getName());
+    Logger logger = LogManager.getLogger(BusRouteService.class.getName());
 
     public BusRouteService() throws IOException {
         try {

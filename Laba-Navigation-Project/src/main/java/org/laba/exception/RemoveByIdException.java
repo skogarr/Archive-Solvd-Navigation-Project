@@ -46,6 +46,11 @@ public class RemoveByIdException extends Exception {
     }
 
     public long getErrorCode() {
-        return REMOVE_BY_ID_ERROR.getErrorCode();
+        return errorCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Exception message: " + getMessage() + "\n Error code: " + errorCode;
     }
 }

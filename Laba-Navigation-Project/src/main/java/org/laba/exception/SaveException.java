@@ -1,7 +1,6 @@
 package org.laba.exception;
 
 import java.util.Objects;
-
 import static org.laba.exception.Error.SAVE_ERROR;
 
 /**
@@ -35,7 +34,6 @@ public class SaveException extends Exception {
         super(message);
         this.errorCode = errorCode;
     }
-
     public SaveException(Throwable cause, long errorCode) {
         super(cause);
         this.errorCode = errorCode;
@@ -47,6 +45,11 @@ public class SaveException extends Exception {
     }
 
     public long getErrorCode() {
-        return SAVE_ERROR.getErrorCode();
+        return errorCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Exception message: " + getMessage() + "\n Error code: " + errorCode;
     }
 }

@@ -46,6 +46,11 @@ public class MapperException extends Exception {
     }
 
     public long getErrorCode() {
-            return MAPPER_ERROR.getErrorCode();
+        return errorCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Exception message: " + getMessage() + "\n Error code: " + errorCode;
     }
 }

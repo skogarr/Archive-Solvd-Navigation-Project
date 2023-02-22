@@ -4,8 +4,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.*;
 import org.laba.dao.ITramRouteDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
@@ -21,7 +20,7 @@ import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class TramRouteService {
     SqlSessionFactory sqlSessionFactory;
-    Logger logger = Logger.getLogger(TramRouteService.class.getName());
+    Logger logger = LogManager.getLogger(TramRouteService.class.getName());
 
     public TramRouteService() {
         try {

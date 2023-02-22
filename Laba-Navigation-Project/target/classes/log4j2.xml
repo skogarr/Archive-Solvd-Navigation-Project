@@ -26,5 +26,25 @@
             <AppenderRef ref="ABC"/>
             <AppenderRef ref="file"/>
         </Root>
+        <Root level="error">
+            <AppenderRef ref="ABC"/>
+            <AppenderRef ref="file"/>
+        </Root>
+        <Root level="info">
+            <AppenderRef ref="ABC"/>
+            <AppenderRef ref="file"/>
+        </Root>
+        <Root level="warn">
+            <AppenderRef ref="ABC"/>
+            <AppenderRef ref="file"/>
+        </Root>
+        <Root level="debug">
+            <AppenderRef ref="ABC"/>
+            <AppenderRef ref="file"/>
+        </Root>
+        <Root level="trace">
+            <AppenderRef ref="ABC"/>
+            <AppenderRef ref="file"/>
+        </Root>
     </Loggers>
 </Configuration>

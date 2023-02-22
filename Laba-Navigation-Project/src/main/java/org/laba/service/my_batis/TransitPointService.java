@@ -4,8 +4,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.*;
 import org.laba.dao.ITransitPointDAO;
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
@@ -22,7 +21,7 @@ import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class TransitPointService {
     SqlSessionFactory sqlSessionFactory;
-    Logger logger = Logger.getLogger(TransitPointService.class.getName());
+    Logger logger = LogManager.getLogger(TransitPointService.class.getName());
 
     public TransitPointService() {
         try {

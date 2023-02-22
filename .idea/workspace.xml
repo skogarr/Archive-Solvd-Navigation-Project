@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb968bed-08de-487d-ace2-620f51fda424" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_6_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_surefire_surefire_logger_api_2_22_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/Laba-Navigation-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/Laba-Navigation-Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/MapperException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/MapperException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/SaveException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/exception/SaveException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusRouteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/BusStopService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/DistanceBetweenService.java" afterDir="false" />
@@ -15,7 +23,7 @@
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TramStopService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TransitPointService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/service/my_batis/TravelWeightService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/target/classes/org/laba/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/target/classes/org/laba/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/logger/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/log4j2.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,11 +80,12 @@
       <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources" />
       <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/resources/logger" />
       <recent name="$PROJECT_DIR$/Laba-Navigation-Project/src/main/java/org/laba/gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.tam">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.laba.Main" />
       <module name="Laba-Navigation-Project" />
@@ -103,12 +112,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="tam" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.laba.tam" />
+      <module name="Laba-Navigation-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.laba.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.tam" />
         <item itemvalue="Application.StreetMap" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.StreetMap" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

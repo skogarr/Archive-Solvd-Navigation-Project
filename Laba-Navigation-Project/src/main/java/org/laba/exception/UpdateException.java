@@ -47,6 +47,11 @@ public class UpdateException extends Exception {
     }
 
     public long getErrorCode() {
-        return UPDATE_ERROR.getErrorCode();
+        return errorCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Exception message: " + getMessage() + "\n Error code: " + errorCode;
     }
 }
