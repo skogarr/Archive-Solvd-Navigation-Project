@@ -14,7 +14,7 @@ public class SaveException extends Exception {
     private static final long serialVersionUID = 11L;
     private final long errorCode;
 
-    public static SaveException wrap(Throwable exception, long errorCode) {
+    public static SaveException wrap(Exception exception, long errorCode) {
         if (exception instanceof SaveException) {
             SaveException se = (SaveException) exception;
             if (Objects.isNull(errorCode) != true && errorCode != se.getErrorCode()) {

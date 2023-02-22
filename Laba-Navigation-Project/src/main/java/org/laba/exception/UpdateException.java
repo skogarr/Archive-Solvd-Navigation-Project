@@ -15,7 +15,7 @@ public class UpdateException extends Exception {
     private static final long serialVersionUID = 11L;
     private final long errorCode;
 
-    public static UpdateException wrap(Throwable exception, long errorCode) {
+    public static UpdateException wrap(Exception exception, long errorCode) {
         if (exception instanceof UpdateException) {
             UpdateException se = (UpdateException) exception;
             if (Objects.isNull(errorCode) != true && errorCode != se.getErrorCode()) {

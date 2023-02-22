@@ -14,7 +14,7 @@ public class RemoveByIdException extends Exception {
     private static final long serialVersionUID = 11L;
     private final long errorCode;
 
-    public static RemoveByIdException wrap(Throwable exception, long errorCode) {
+    public static RemoveByIdException wrap(Exception exception, long errorCode) {
         if (exception instanceof RemoveByIdException) {
             RemoveByIdException se = (RemoveByIdException) exception;
             if (Objects.isNull(errorCode) != true && errorCode != se.getErrorCode()) {
