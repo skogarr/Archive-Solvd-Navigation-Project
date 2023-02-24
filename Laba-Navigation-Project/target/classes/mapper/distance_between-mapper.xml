@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.IDistanceBetweenDAO">
+
+    <sql id="body">
+        d.transit_point_a_id as transit_point_a_id,
+        d.transit_point_b_id as transit_point_b_id,
+        d.distance as distance
+    </sql>
+
+    <select id="getEntityById" resultMap="distanceBetweenResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        distance_between d
+        WHERE id = #{id}
+    </select>
+
+    <select id="getDistanceByTransitPointAidAndTransitPointBid" resultMap="distanceBetweenResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        distance_between d
+        WHERE transit_point_a_id = #{param1}
+        AND transit_point_b_id = #{param2}
+    </select>
+
+    <select id="selectTransitPoint" resultType="org.laba.model.TransitPoint">
+        SELECT * FROM transit_points WHERE id= #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO distance_between (transit_point_a_id, transit_point_b_id, distance)
+        VALUES (#{transitPointA.id}, #{transitPointB.id}, #{distance})
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE distance_between SET
+        transit_point_a_id = #{transitPointA.id},
+        transit_point_b_id = #{transitPointB.id},
+        distance = #{distance}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM distance_between WHERE id = #{id}
+    </delete>
+
+    <resultMap id="distanceBetweenResultMap" type="org.laba.model.DistanceBetween" autoMapping="false">
+        <result column="distance" property="distance" />
+        <association property="transitPointA" column="transit_point_a_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+        <association property="transitPointB" column="transit_point_b_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
+    </resultMap>
+</mapper>

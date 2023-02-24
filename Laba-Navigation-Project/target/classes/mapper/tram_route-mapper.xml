@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+<mapper namespace="org.laba.dao.ITramRouteDAO">
+
+    <sql id="body">
+        tr.id as _route_id,
+        tr.route_name as route_name
+    </sql>
+
+    <select id="getEntityById" resultMap="tramRouteResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+        tram_routes tr
+        WHERE id = #{id}
+    </select>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tram_routes (route_name)
+        VALUES (#{route_name})
+    </insert>
+
+    <update id="updateEntity">
+        UPDATE tram_routes SET
+        route_name = #{route_name}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="removeEntity">
+        DELETE FROM tram_routes WHERE id = #{id}
+    </delete>
+
+    <resultMap id="tramRouteResultMap" type="org.laba.model.TramRoute" autoMapping="false">
+        <id column="tram_route_id" property="id"/>
+        <result column="route_name" property="routeName"/>
+    </resultMap>
+</mapper>
