@@ -11,9 +11,9 @@ public class TramStop {
 
     private long id;
 
-    private long tramRouteId;
+    private TramRoute tramRoute;
 
-    private long transitPointId;
+    private TransitPoint transitPoint;
 
     private int stopNo;
 

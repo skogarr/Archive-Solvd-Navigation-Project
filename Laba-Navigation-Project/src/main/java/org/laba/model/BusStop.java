@@ -11,9 +11,9 @@ public class BusStop {
 
     private long id;
 
-    private long busRouteId;
+    private BusRoute busRoute;
 
-    private long transitPointId;
+    private TransitPoint transitPoint;
 
     private String stopNo;
 

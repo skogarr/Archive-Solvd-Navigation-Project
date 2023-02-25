@@ -10,6 +10,7 @@ import org.laba.model.BusStop;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 public class BusStopService {
     SqlSessionFactory sqlSessionFactory;
@@ -24,13 +25,13 @@ public class BusStopService {
 
     }
 
-    public BusStop getById(Long id) {
-        BusStop busStop;
+    public List<BusStop> getAllByTransitPointId(Long id) {
+        List<BusStop> resultList;
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IBusStopDAO busStopDAO = sqlSession.getMapper(IBusStopDAO.class);
-            busStop = busStopDAO.getEntityById(id);
+            resultList = busStopDAO.getAllStopsByTransitPointId(id);
         }
-        return busStop;
+        return resultList;
     }
 
     public BusStop save(BusStop busStop) {
