@@ -10,9 +10,9 @@ import lombok.*;
 public class MetroStop {
     private long id;
 
-    private long metroRouteId;
+    private MetroRoute metroRoute;
 
-    private long transitPointId;
+    private TransitPoint transitPoint;
 
     private int stopNo;
 

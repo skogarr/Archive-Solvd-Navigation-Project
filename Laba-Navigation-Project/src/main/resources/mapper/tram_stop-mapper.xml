@@ -4,18 +4,17 @@
 <mapper namespace="org.laba.dao.ITramStopDAO">
 
     <sql id="body">
-        ts.id as tram_stop_id,
         ts.tram_route_id as tram_route_id,
         ts.transit_point_id as transit_point_id,
         ts.stop_no as stop_no
     </sql>
 
-    <select id="getEntityById" resultMap="tramStopResultMap">
+    <select id="getAllStopsByTransitPointId" resultMap="tramStopResultMap">
         SELECT
         <include refid="body"/>
         FROM
         tram_stops ts
-        WHERE id = #{id}
+        WHERE transit_point_id = #{id}
     </select>
 
     <select id="selectTramRoute" resultType="org.laba.model.TramRoute">
@@ -28,14 +27,14 @@
 
     <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tram_stops (tram_route_id, transit_point_id, stop_no)
-        VALUES (#{tramRoute.id}, #{transitPoint.id}, #{stop_no})
+        VALUES (#{tramRoute.id}, #{transitPoint.id}, #{stopNo})
     </insert>
 
     <update id="updateEntity">
         UPDATE tram_stops SET
         tram_route_id = #{tramRoute.id},
         transit_point_id = #{transitPoint.id},
-        stop_no = #{stop_no}
+        stop_no = #{stopNo}
         WHERE id = #{id}
     </update>
 
@@ -44,7 +43,6 @@
     </delete>
 
     <resultMap id="tramStopResultMap" type="org.laba.model.TramStop" autoMapping="false">
-        <id column="tram_stop_id" property="id"/>
         <result column="stop_no" property="stopNo"/>
         <association property="tramRoute" column="tram_route_id" javaType="org.laba.model.TramRoute" select="selectTramRoute"/>
         <association property="transitPoint" column="transit_point_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
