@@ -47,6 +47,13 @@
         DELETE FROM distance_between WHERE id = #{id}
     </delete>
 
+    <select id="getAllDistances" resultMap="distanceBetweenResultMap" >
+        SELECT
+        <include refid="body"/>
+        FROM
+        distance_between d
+    </select>
+
     <resultMap id="distanceBetweenResultMap" type="org.laba.model.DistanceBetween" autoMapping="false">
         <result column="distance" property="distance" />
         <association property="transitPointA" column="transit_point_a_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>

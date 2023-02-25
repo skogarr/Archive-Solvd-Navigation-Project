@@ -14,6 +14,7 @@ import org.laba.model.MetroStop;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import static org.laba.exception.Error.*;
 import static org.laba.exception.Error.UPDATE_ERROR;
@@ -32,13 +33,13 @@ public class MetroStopService {
 
     }
 
-    public MetroStop getById(Long id) {
-        MetroStop metroStop;
+    public List<MetroStop> getAllByTransitPointId(Long id) {
+        List<MetroStop> resultList;
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
-            metroStop = metroStopDAO.getEntityById(id);
+            resultList = metroStopDAO.getAllStopsByTransitPointId(id);
         }
-        return metroStop;
+        return resultList;
     }
 
     public MetroStop save(MetroStop metroStop) throws SaveException, MapperException {

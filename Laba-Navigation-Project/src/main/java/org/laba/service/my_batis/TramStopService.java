@@ -14,6 +14,7 @@ import org.laba.model.TramStop;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import static org.laba.exception.Error.*;
 import static org.laba.exception.Error.UPDATE_ERROR;
@@ -32,13 +33,13 @@ public class TramStopService {
 
     }
 
-    public TramStop getById(Long id) {
-        TramStop tramStop;
+    public List<TramStop> getAllByTransitPointId(Long id) {
+        List<TramStop> resultList;
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramStopDAO tramStopDAO = sqlSession.getMapper(ITramStopDAO.class);
-            tramStop = tramStopDAO.getEntityById(id);
+            resultList = tramStopDAO.getAllStopsByTransitPointId(id);
         }
-        return tramStop;
+        return resultList;
     }
 
     public TramStop save(TramStop tramStop) throws SaveException, MapperException {

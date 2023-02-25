@@ -1,16 +1,25 @@
 package org.laba.service.my_batis;
 
+import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.*;
 import org.laba.dao.IDistanceBetweenDAO;
+
 import org.laba.exception.MapperException;
 import org.laba.exception.RemoveByIdException;
 import org.laba.exception.SaveException;
 import org.laba.exception.UpdateException;
 import org.laba.model.DistanceBetween;
+
+import org.laba.dao.ITransitPointDAO;
+import org.laba.dao.ITravelWeightDAO;
+import org.laba.model.DistanceBetween;
+import org.laba.model.TransitPoint;
+import org.laba.model.TravelWeight;
+
 
 import java.io.IOException;
 import java.io.Reader;
@@ -107,4 +116,14 @@ public class DistanceBetweenService {
             throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
+
+    public List<DistanceBetween> getAllDistances() {
+        List<DistanceBetween> resulList;
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            IDistanceBetweenDAO distanceBetweenDAO = sqlSession.getMapper(IDistanceBetweenDAO.class);
+            resulList = distanceBetweenDAO.getAllDistances();
+        }
+        return resulList;
+    }
+
 }

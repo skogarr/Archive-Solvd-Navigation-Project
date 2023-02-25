@@ -9,7 +9,7 @@
         tw.car_weight as car_weight,
         tw.bus_weight as bus_weight,
         tw.tram_weight as tram_weight,
-        tw.metro_weight as tram_weight
+        tw.metro_weight as metro_weight
     </sql>
 
     <select id="getEntityById" resultMap="travelWeightResultMap">
@@ -52,6 +52,13 @@
     <delete id="removeEntity">
         DELETE FROM travel_weights WHERE id = #{id}
     </delete>
+
+    <select id="getAllTravelWeights" resultMap="travelWeightResultMap" >
+        SELECT
+        <include refid="body"/>
+        FROM
+        travel_weights tw
+    </select>
 
     <resultMap id="travelWeightResultMap" type="org.laba.model.TravelWeight" autoMapping="false">
         <result column="car_weight" property="carWeight" />

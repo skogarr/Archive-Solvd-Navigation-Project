@@ -4,18 +4,17 @@
 <mapper namespace="org.laba.dao.IBusStopDAO">
 
     <sql id="body">
-        bs.id as bus_stop_id,
         bs.bus_route_id as bus_route_id,
         bs.transit_point_id as transit_point_id,
         bs.stop_no as stop_no
     </sql>
 
-    <select id="getEntityById" resultMap="busStopResultMap">
+    <select id="getAllStopsByTransitPointId" resultMap="busStopResultMap">
         SELECT
         <include refid="body"/>
         FROM
         bus_stops bs
-        WHERE id = #{id}
+        WHERE transit_point_id = #{id}
     </select>
 
     <select id="selectBusRoute" resultType="org.laba.model.BusRoute">
@@ -28,14 +27,14 @@
 
     <insert id="createEntity" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO bus_stops (bus_route_id, transit_point_id, stop_no)
-        VALUES (#{busRoute.id}, #{transitPoint.id}, #{stop_no})
+        VALUES (#{busRoute.id}, #{transitPoint.id}, #{stopNo})
     </insert>
 
     <update id="updateEntity">
         UPDATE bus_stops SET
         bus_route_id = #{busRoute.id},
         transit_point_id = #{transitPoint.id},
-        stop_no = #{stop_no}
+        stop_no = #{stopNo}
         WHERE id = #{id}
     </update>
 
@@ -44,7 +43,6 @@
     </delete>
 
     <resultMap id="busStopResultMap" type="org.laba.model.BusStop" autoMapping="false">
-        <id column="bus_stop_id" property="id"/>
         <result column="stop_no" property="stopNo"/>
         <association property="busRoute" column="bus_route_id" javaType="org.laba.model.BusRoute" select="selectBusRoute"/>
         <association property="transitPoint" column="transit_point_id" javaType="org.laba.model.TransitPoint" select="selectTransitPoint"/>
