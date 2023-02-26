@@ -8,13 +8,18 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.ITransitPointDAO;
 import org.laba.dao.ITravelWeightDAO;
 import org.laba.model.TransitPoint;
+import org.apache.logging.log4j.*;
 import org.laba.model.TravelWeight;
-
+import org.laba.exception.*;
 import java.io.IOException;
 import java.io.Reader;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class TravelWeightService {
     SqlSessionFactory sqlSessionFactory;
+    Logger logger = LogManager.getLogger(TravelWeightService.class.getName());
+
 
     public TravelWeightService() {
         try {
@@ -44,7 +49,7 @@ public class TravelWeightService {
         return travelWeight;
     }
 
-    public TravelWeight save(TravelWeight travelWeight) {
+    public TravelWeight save(TravelWeight travelWeight)  throws SaveException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
 
@@ -53,16 +58,18 @@ public class TravelWeightService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(SAVE_ERROR.getErrorCode(), e);
+                throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return travelWeight;
     }
 
-    public void update(TravelWeight travelWeight) {
+    public void update(TravelWeight travelWeight) throws UpdateException, MapperException {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
 
@@ -71,15 +78,17 @@ public class TravelWeightService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(UPDATE_ERROR.getErrorCode(), e);
+                throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 
-    public void removeById(long id) {
+    public void removeById(long id) throws RemoveByIdException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITravelWeightDAO travelWeightDAO = sqlSession.getMapper(ITravelWeightDAO.class);
 
@@ -88,11 +97,13 @@ public class TravelWeightService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(REMOVE_BY_ID_ERROR.getErrorCode(), e);
+                throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 
