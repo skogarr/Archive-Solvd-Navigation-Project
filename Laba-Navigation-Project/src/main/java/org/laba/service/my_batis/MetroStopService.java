@@ -7,13 +7,17 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IBusStopDAO;
 import org.laba.dao.IMetroStopDAO;
 import org.laba.model.MetroStop;
-
+import org.apache.logging.log4j.*;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import org.laba.exception.*;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class MetroStopService {
     SqlSessionFactory sqlSessionFactory;
+    Logger logger = LogManager.getLogger(MetroStopService.class.getName());
 
     public MetroStopService() {
         try {
@@ -34,7 +38,7 @@ public class MetroStopService {
         return resultList;
     }
 
-    public MetroStop save(MetroStop metroStop) {
+    public MetroStop save(MetroStop metroStop) throws SaveException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
 
@@ -43,16 +47,18 @@ public class MetroStopService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(SAVE_ERROR.getErrorCode(), e);
+                throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return metroStop;
     }
 
-    public void update(MetroStop metroStop) {
+    public void update(MetroStop metroStop) throws UpdateException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
 
@@ -61,15 +67,17 @@ public class MetroStopService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(UPDATE_ERROR.getErrorCode(), e);
+                throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 
-    public void removeById(long id) {
+    public void removeById(long id)  throws RemoveByIdException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             IMetroStopDAO metroStopDAO = sqlSession.getMapper(IMetroStopDAO.class);
 
@@ -78,11 +86,13 @@ public class MetroStopService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(REMOVE_BY_ID_ERROR.getErrorCode(), e);
+                throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 }

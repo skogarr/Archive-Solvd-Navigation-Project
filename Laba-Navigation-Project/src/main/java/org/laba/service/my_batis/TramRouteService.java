@@ -5,14 +5,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.laba.dao.IMetroRouteDAO;
+import org.apache.logging.log4j.*;
 import org.laba.dao.ITramRouteDAO;
 import org.laba.model.TramRoute;
-
+import org.laba.exception.*;
 import java.io.IOException;
 import java.io.Reader;
+import static org.laba.exception.Error.*;
+import static org.laba.exception.Error.UPDATE_ERROR;
 
 public class TramRouteService {
     SqlSessionFactory sqlSessionFactory;
+    Logger logger = LogManager.getLogger(TramRouteService.class.getName());
 
     public TramRouteService() {
         try {
@@ -33,7 +37,7 @@ public class TramRouteService {
         return tramRoute;
     }
 
-    public TramRoute save(TramRoute tramRoute) {
+    public TramRoute save(TramRoute tramRoute)  throws SaveException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramRouteDAO tramRouteDAO = sqlSession.getMapper(ITramRouteDAO.class);
 
@@ -42,16 +46,18 @@ public class TramRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(SAVE_ERROR.getErrorCode(), e);
+                throw new SaveException(SAVE_ERROR.getDescription(), e, SAVE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
         return tramRoute;
     }
 
-    public void update(TramRoute tramRoute) {
+    public void update(TramRoute tramRoute) throws UpdateException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramRouteDAO tramRouteDAO = sqlSession.getMapper(ITramRouteDAO.class);
 
@@ -60,15 +66,17 @@ public class TramRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(UPDATE_ERROR.getErrorCode(), e);
+                throw new UpdateException(UPDATE_ERROR.getDescription(), e, UPDATE_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 
-    public void removeById(long id) {
+    public void removeById(long id)  throws RemoveByIdException, MapperException{
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             ITramRouteDAO tramRouteDAO = sqlSession.getMapper(ITramRouteDAO.class);
 
@@ -77,11 +85,13 @@ public class TramRouteService {
                 sqlSession.commit();
             } catch (Exception e) {
                 sqlSession.rollback();
-                e.printStackTrace();
+                logger.error(REMOVE_BY_ID_ERROR.getErrorCode(), e);
+                throw new RemoveByIdException(REMOVE_BY_ID_ERROR.getDescription(), e, REMOVE_BY_ID_ERROR.getErrorCode());
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(MAPPER_ERROR.getErrorCode(), e);
+            throw new MapperException(MAPPER_ERROR.getDescription(), e, MAPPER_ERROR.getErrorCode());
         }
     }
 }
