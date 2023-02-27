@@ -57,7 +57,7 @@ public class Main {
         FloydAlg carTransport = new FloydAlg(allTravelWeights,allDistances,allTransitPoints);
         double[][] graph = carTransport.buildGraphCar();
         carTransport.setGraph(graph);
-        ArrayList<Integer> pathCar = carTransport.getPath(source, destination);
+        ArrayList<Integer> pathCar = carTransport.constructPath(source, destination);
         System.out.println(pathCar);
         double finalTripTime = carTransport.getFinalTripTime(pathCar, tripType);
         System.out.println(finalTripTime);
@@ -66,11 +66,10 @@ public class Main {
         FloydAlg publicTransport = new FloydAlg(allTravelWeights,allDistances,allTransitPoints);
         double[][] graph = publicTransport.buildGraphPublic();
         publicTransport.setGraph(graph);
-        ArrayList<Integer> pathPublic = publicTransport.getPath(source, destination);
+        ArrayList<Integer> pathPublic = publicTransport.constructPath(source, destination);
         System.out.println(pathPublic);
         double publicTransportFinalTripTime = publicTransport.getFinalTripTime(pathPublic, tripType);
         System.out.println(publicTransportFinalTripTime);
-
         publicTransport.prettyPrintPublic(pathPublic);
       }
     }

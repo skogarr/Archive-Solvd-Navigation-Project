@@ -18,10 +18,10 @@ public class FloydAlg {
   private static final BusStopService busStopService = new BusStopService();
   private static final TramStopService tramStopService = new TramStopService();
   private static final MetroStopService metroStopService = new MetroStopService();
-  private final int X;
-  List<TravelWeight> allTravelWeights;
-  List<DistanceBetween> allDistances;
-  List<TransitPoint> allTransitPoints;
+  private final int blockedPath;
+  private List<TravelWeight> allTravelWeights;
+  private List<DistanceBetween> allDistances;
+  private List<TransitPoint> allTransitPoints;
   private double[][] distance;
   private double[][] next;
   private double[][] graph;
@@ -29,7 +29,7 @@ public class FloydAlg {
   public FloydAlg(double[][] graph, int inf, List<TravelWeight> allTravelWeights,
       List<DistanceBetween> allDistances,
       List<TransitPoint> allTransitPoints) {
-    this.X = inf;
+    this.blockedPath = inf;
     this.graph = graph;
     this.allTravelWeights = allTravelWeights;
     this.allDistances = allDistances;
@@ -40,7 +40,7 @@ public class FloydAlg {
   public FloydAlg(List<TravelWeight> allTravelWeights, List<DistanceBetween> allDistances,
       List<TransitPoint> allTransitPoints) {
     this.graph = null;
-    this.X = Integer.MAX_VALUE;
+    this.blockedPath = Integer.MAX_VALUE;
     this.allTravelWeights = allTravelWeights;
     this.allDistances = allDistances;
     this.allTransitPoints = allTransitPoints;
@@ -49,10 +49,6 @@ public class FloydAlg {
   public void setGraph(double[][] graph) {
     this.graph = graph;
     compute();
-  }
-
-  public ArrayList<Integer> getPath(int fromLoc, int toLoc) {
-    return constructPath(fromLoc, toLoc);
   }
 
   public double[][] buildGraphCar() {
@@ -79,7 +75,6 @@ public class FloydAlg {
           graph[i][j] = Integer.MAX_VALUE;
           continue;
         }
-
         graph[i][j] = weightab * distance;
         graph[j][i] = weightba * distance;
       }
@@ -141,6 +136,22 @@ public class FloydAlg {
     return graph;
   }
 
+  public ArrayList<Integer> constructPath(int from, int to) {
+    if (this.graph == null) {
+      throw new NullPointerException("Variable \"graph\" wasn't set");
+    }
+    if (next[from][to] == -1) {
+      return null;
+    }
+    ArrayList<Integer> path = new ArrayList<>();
+    path.add(from);
+    while (from != to) {
+      from = (int) next[from][to];
+      path.add(from);
+    }
+    return path;
+  }
+
   public double getFinalTripTime(ArrayList<Integer> path, TripType tripType) {
     double sum = 0d;
     double value = 0d;
@@ -172,7 +183,6 @@ public class FloydAlg {
     }
     return Double.parseDouble(String.format(Locale.US, "%.2f", sum));
   }
-
 
   public void prettyPrintPublic(ArrayList<Integer> path) {
     for (int i = 0; i < path.size() - 1; i++) {
@@ -327,12 +337,12 @@ public class FloydAlg {
     return weight;
   }
 
-  private void init(double[][] graph) {
+  private void initialize(double[][] graph) {
     int V = graph.length;
     for (int i = 0; i < V; i++) {
       for (int j = 0; j < V; j++) {
         distance[i][j] = graph[i][j];
-        if (graph[i][j] == X) {
+        if (graph[i][j] == blockedPath) {
           next[i][j] = -1;
         } else {
           next[i][j] = j;
@@ -341,27 +351,11 @@ public class FloydAlg {
     }
   }
 
-  private ArrayList<Integer> constructPath(int from, int to) {
-    if (this.graph == null) {
-      throw new NullPointerException("Variable \"graph\" wasn't set");
-    }
-    if (next[from][to] == -1) {
-      return null;
-    }
-    ArrayList<Integer> path = new ArrayList<>();
-    path.add(from);
-    while (from != to) {
-      from = (int) next[from][to];
-      path.add(from);
-    }
-    return path;
-  }
-
   private void floyd(int V) {
     for (int k = 0; k < V; k++) {
       for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
-          if (distance[i][k] == X || distance[k][j] == X) {
+          if (distance[i][k] == blockedPath || distance[k][j] == blockedPath) {
             continue;
           }
           if (distance[i][j] > distance[i][k] + distance[k][j]) {
@@ -376,7 +370,7 @@ public class FloydAlg {
   private void compute() {
     this.distance = new double[graph.length][graph.length];
     this.next = new double[graph.length][graph.length];
-    init(graph);
+    initialize(graph);
     floyd(graph.length);
   }
 }
