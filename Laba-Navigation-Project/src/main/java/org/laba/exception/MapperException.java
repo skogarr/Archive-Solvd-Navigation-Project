@@ -10,7 +10,6 @@ import java.util.Objects;
  */
 public class MapperException extends Exception {
 
-    private static final long serialVersionUID = 11L;
     private final long errorCode;
 
     public static MapperException wrap(Exception exception, long errorCode) {
