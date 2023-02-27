@@ -10,7 +10,6 @@ import java.util.Objects;
  */
 public class SaveException extends Exception {
 
-    private static final long serialVersionUID = 11L;
     private final long errorCode;
 
     public static SaveException wrap(Exception exception, long errorCode) {
